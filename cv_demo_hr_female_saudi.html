@@ -1,0 +1,495 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>نورة القحطاني | أخصائية موارد بشرية</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#120f1d;
+      --bg2:#1a1328;
+      --panel:rgba(255,255,255,.05);
+      --stroke:rgba(255,255,255,.09);
+      --text:#f8f4ff;
+      --muted:rgba(248,244,255,.72);
+      --pink:#ff5cab;
+      --rose:#ff87c0;
+      --violet:#9e7bff;
+      --purple:#6e53ff;
+      --peach:#ffca9f;
+      --mint:#72e8d0;
+      --shadow:0 28px 70px rgba(0,0,0,.35);
+      --radius:28px;
+      --container:1280px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family:"Tajawal",system-ui,sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(1000px 500px at -5% 0%, rgba(255,92,171,.24), transparent 58%),
+        radial-gradient(850px 440px at 105% 10%, rgba(158,123,255,.22), transparent 58%),
+        radial-gradient(1000px 500px at 50% 100%, rgba(114,232,208,.10), transparent 62%),
+        linear-gradient(180deg,var(--bg),var(--bg2));
+      min-height:100vh;
+      overflow-x:hidden;
+    }
+    a{text-decoration:none;color:inherit}
+    .container{max-width:var(--container);margin:auto;padding:0 18px}
+
+    .nav{
+      position:sticky;top:0;z-index:80;
+      backdrop-filter:blur(16px);
+      background:rgba(18,15,29,.52);
+      border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:14px 0}
+    .brand{display:flex;align-items:center;gap:10px;font-weight:900}
+    .brand-mark{width:14px;height:14px;border-radius:50%;background:linear-gradient(135deg,var(--pink),var(--violet));box-shadow:0 0 0 6px rgba(255,92,171,.12)}
+    .nav-links{display:flex;gap:8px;flex-wrap:wrap}
+    .nav-links a{padding:10px 14px;border-radius:999px;color:var(--muted);font-weight:800;transition:.2s ease}
+    .nav-links a:hover,.nav-links a.active{background:rgba(255,255,255,.06);color:var(--text)}
+
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;gap:10px;
+      min-height:52px;padding:12px 18px;border-radius:16px;border:1px solid rgba(255,255,255,.14);
+      background:linear-gradient(135deg,rgba(255,92,171,.96),rgba(158,123,255,.70));
+      color:#250717;font-weight:900;box-shadow:var(--shadow);transition:.2s ease;cursor:pointer;
+    }
+    .btn:hover{transform:translateY(-2px);filter:brightness(1.05)}
+    .btn.secondary{background:rgba(255,255,255,.04);color:var(--text);box-shadow:none}
+    .btn.mint{background:linear-gradient(135deg,rgba(114,232,208,.95),rgba(158,123,255,.52));color:#08211c}
+    .btn.peach{background:linear-gradient(135deg,rgba(255,202,159,.96),rgba(255,92,171,.62));color:#2a1208}
+
+    .hero{padding:26px 0 18px}
+    .hero-shell{
+      position:relative;
+      border:1px solid rgba(255,255,255,.08);
+      border-radius:36px;
+      background:
+        linear-gradient(180deg,rgba(255,255,255,.05),rgba(255,255,255,.03)),
+        radial-gradient(900px 380px at 0% 0%, rgba(255,92,171,.16), transparent 60%),
+        radial-gradient(800px 360px at 100% 20%, rgba(158,123,255,.14), transparent 60%);
+      box-shadow:var(--shadow);
+      overflow:hidden;
+      isolation:isolate;
+    }
+    .hero-shell::before{
+      content:"";position:absolute;inset:auto -80px -80px auto;width:240px;height:240px;border-radius:50%;
+      background:radial-gradient(circle, rgba(255,255,255,.14), transparent 68%);
+      filter:blur(8px);opacity:.8;pointer-events:none;
+    }
+    .hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:20px;padding:22px}
+    @media (max-width:1080px){.hero-grid{grid-template-columns:1fr}}
+
+    .left-column{display:grid;gap:18px}
+    .identity-card,.contact-card,.timeline-card,.skills-card,.showcase-card,.cta-band,.hero-copy,.hero-visual,.case-card,.metric-card,.floating-actions,.mini-work{border:1px solid var(--stroke);background:var(--panel);box-shadow:var(--shadow)}
+    .identity-card,.contact-card,.timeline-card,.skills-card,.showcase-card,.case-card,.hero-copy,.hero-visual,.cta-band{border-radius:30px}
+    .metric-card,.mini-work{border-radius:24px}
+
+    .identity-card{
+      display:grid;grid-template-columns:140px 1fr;gap:16px;padding:18px;
+      background:
+        radial-gradient(500px 240px at 0% 0%, rgba(255,92,171,.14), transparent 60%),
+        rgba(255,255,255,.045);
+    }
+    @media (max-width:560px){.identity-card{grid-template-columns:1fr}}
+    .avatar{
+      height:150px;border-radius:26px;border:1px solid rgba(255,255,255,.12);
+      background:
+        radial-gradient(300px 140px at 50% 0%, rgba(255,202,159,.22), transparent 58%),
+        linear-gradient(180deg,#352046,#241331);
+      display:grid;place-items:center;position:relative;overflow:hidden;
+    }
+    .avatar::after{
+      content:"";position:absolute;inset:auto auto -10px -10px;width:70px;height:70px;border-radius:20px;
+      background:linear-gradient(135deg,rgba(255,255,255,.16),rgba(255,255,255,.04));transform:rotate(18deg)
+    }
+    .avatar-badge{
+      width:84px;height:84px;border-radius:50%;display:grid;place-items:center;
+      background:linear-gradient(180deg,rgba(255,255,255,.16),rgba(255,255,255,.04));
+      border:1px solid rgba(255,255,255,.18);font-size:40px;font-weight:900;color:#fff
+    }
+    .name{font-size:34px;font-weight:900;margin:0 0 6px}
+    .role{margin:0;color:var(--muted);font-weight:700;line-height:1.9}
+    .status-row{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+    .pill{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:999px;background:rgba(255,255,255,.05);border:1px solid var(--stroke);font-weight:800;color:var(--muted)}
+    .dot{width:8px;height:8px;border-radius:50%;background:var(--mint)}
+    .chip-wrap{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+    .chip{padding:9px 12px;border-radius:999px;background:rgba(255,255,255,.04);border:1px solid var(--stroke);font-size:12px;font-weight:800;color:rgba(255,255,255,.86)}
+
+    .contact-card{padding:18px}
+    .contact-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px}
+    .contact-head h3,.timeline-card h3,.skills-card h3,.showcase-card h3,.hero-copy h1,.hero-visual h3,.cta-band h2,.section-head h2,.case-card h3{margin:0}
+    .contact-head span{color:var(--muted);font-weight:800}
+    .contact-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+    @media (max-width:560px){.contact-actions{grid-template-columns:1fr}}
+
+    .hero-main{display:grid;gap:18px}
+    .hero-copy{
+      padding:24px;
+      background:
+        radial-gradient(700px 240px at 0% 0%, rgba(255,92,171,.16), transparent 60%),
+        radial-gradient(700px 240px at 100% 100%, rgba(158,123,255,.12), transparent 60%),
+        rgba(255,255,255,.045);
+    }
+    .eyebrow{display:inline-flex;align-items:center;gap:8px;padding:10px 14px;border-radius:999px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);color:var(--muted);font-weight:800}
+    .hero-copy h1{font-size:clamp(34px,5vw,58px);line-height:1.06;margin-top:14px;margin-bottom:12px}
+    .hero-copy p{margin:0;color:var(--muted);font-size:18px;line-height:1.95;font-weight:650;max-width:850px}
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
+
+    .floating-actions{
+      display:grid;grid-template-columns:repeat(4,1fr);gap:12px;padding:14px;border-radius:28px;
+      background:rgba(255,255,255,.04);
+    }
+    @media (max-width:900px){.floating-actions{grid-template-columns:1fr 1fr}}
+    @media (max-width:560px){.floating-actions{grid-template-columns:1fr}}
+    .jump{
+      padding:18px;border-radius:22px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.04);
+      display:flex;align-items:center;justify-content:space-between;gap:10px;cursor:pointer;transition:.2s ease
+    }
+    .jump:hover{transform:translateY(-2px);background:rgba(255,255,255,.06)}
+    .jump strong{display:block;font-size:16px}
+    .jump small{display:block;color:var(--muted);font-weight:700;margin-top:4px}
+    .jump b{font-size:24px;color:var(--peach)}
+
+    .hero-visual{padding:18px;display:grid;gap:14px;background:rgba(255,255,255,.045)}
+    .visual-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+    @media (max-width:560px){.visual-grid{grid-template-columns:1fr}}
+    .metric-card{padding:18px;position:relative;overflow:hidden}
+    .metric-card::after{content:"";position:absolute;inset:-60px -60px auto auto;width:170px;height:170px;border-radius:50%;opacity:.32;filter:blur(24px);pointer-events:none}
+    .tone1{background:radial-gradient(500px 220px at 0% 0%, rgba(255,92,171,.14), transparent 60%), rgba(255,255,255,.045)} .tone1::after{background:rgba(255,92,171,.92)}
+    .tone2{background:radial-gradient(500px 220px at 0% 0%, rgba(158,123,255,.16), transparent 60%), rgba(255,255,255,.045)} .tone2::after{background:rgba(158,123,255,.92)}
+    .tone3{background:radial-gradient(500px 220px at 0% 0%, rgba(255,202,159,.16), transparent 60%), rgba(255,255,255,.045)} .tone3::after{background:rgba(255,202,159,.92)}
+    .tone4{background:radial-gradient(500px 220px at 0% 0%, rgba(114,232,208,.14), transparent 60%), rgba(255,255,255,.045)} .tone4::after{background:rgba(114,232,208,.92)}
+    .metric-card b{display:block;font-size:36px;margin-bottom:6px}
+    .metric-card span{display:block;color:var(--muted);font-weight:700;line-height:1.8}
+
+    .progress-wrap{display:grid;gap:12px}
+    .progress-card{padding:16px;border-radius:22px;border:1px solid var(--stroke);background:rgba(255,255,255,.04)}
+    .progress-top{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:10px;font-weight:900}
+    .progress-top span:last-child{color:var(--peach)}
+    .bar{height:12px;border-radius:999px;background:rgba(255,255,255,.08);overflow:hidden;border:1px solid rgba(255,255,255,.06)}
+    .bar i{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,var(--pink),var(--violet),var(--mint))}
+
+    section{padding:18px 0}
+    .section-head{display:flex;align-items:end;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+    .section-head p{margin:0;color:var(--muted);font-weight:700;line-height:1.9;max-width:760px}
+
+    .split-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    @media (max-width:1000px){.split-grid{grid-template-columns:1fr}}
+
+    .timeline-card,.skills-card,.showcase-card{padding:22px}
+    .timeline-list{display:grid;gap:12px;margin-top:16px}
+    .timeline-item{
+      position:relative;padding:16px 16px 16px 16px;border-radius:22px;border:1px solid rgba(255,255,255,.08);background:rgba(255,255,255,.04)
+    }
+    .timeline-item::before{
+      content:"";position:absolute;right:-6px;top:22px;width:12px;height:12px;border-radius:50%;background:linear-gradient(135deg,var(--pink),var(--violet));box-shadow:0 0 0 8px rgba(255,92,171,.10)
+    }
+    .timeline-item h4{margin:0 0 6px;font-size:20px}
+    .timeline-item .meta{margin-bottom:8px}
+    .timeline-item p{margin:0;color:var(--muted);line-height:1.95;font-weight:650}
+
+    .skills-list{display:grid;gap:12px;margin-top:16px}
+    .skills-card p,.showcase-card p,.cta-band p{margin:0;color:var(--muted);line-height:1.95;font-weight:650}
+
+    .showcase-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:16px}
+    @media (max-width:1000px){.showcase-grid{grid-template-columns:1fr}}
+    .mini-work{padding:18px;position:relative;overflow:hidden;transition:.2s ease}
+    .mini-work:hover{transform:translateY(-3px);border-color:rgba(255,255,255,.16)}
+    .mini-work::after{content:"";position:absolute;inset:-60px -60px auto auto;width:170px;height:170px;border-radius:50%;opacity:.28;filter:blur(24px);pointer-events:none}
+    .mini-work.tone1::after{background:rgba(255,92,171,.92)}
+    .mini-work.tone2::after{background:rgba(158,123,255,.92)}
+    .mini-work.tone3::after{background:rgba(255,202,159,.92)}
+    .mini-work h4{margin:0 0 8px;font-size:20px}
+    .mini-work p{margin:0;color:var(--muted);line-height:1.9;font-weight:650}
+    .work-tag{display:inline-flex;padding:8px 12px;border-radius:999px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08);font-size:12px;font-weight:900;color:var(--muted);margin-bottom:10px}
+
+    .cases{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+    @media (max-width:1000px){.cases{grid-template-columns:1fr}}
+    .case-card{padding:22px;position:relative;overflow:hidden}
+    .case-card::after{content:"";position:absolute;inset:-60px -60px auto auto;width:180px;height:180px;border-radius:50%;opacity:.30;filter:blur(24px);pointer-events:none}
+    .case-card.tone1::after{background:rgba(255,92,171,.92)}
+    .case-card.tone4::after{background:rgba(114,232,208,.92)}
+    .case-card p{margin:10px 0 0;color:var(--muted);line-height:1.95;font-weight:650}
+    .case-tags{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+    .case-tags span{padding:8px 11px;border-radius:999px;border:1px solid rgba(255,255,255,.10);background:rgba(255,255,255,.04);font-size:12px;font-weight:800}
+
+    .cta-band{padding:24px;background:
+      radial-gradient(800px 260px at 0% 0%, rgba(255,92,171,.16), transparent 60%),
+      radial-gradient(800px 260px at 100% 100%, rgba(158,123,255,.14), transparent 60%),
+      rgba(255,255,255,.05)}
+    .cta-band h2{font-size:36px;margin-bottom:10px}
+
+    .modal{position:fixed;inset:0;background:rgba(10,7,16,.78);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;padding:20px;z-index:120}
+    .modal.show{display:flex}
+    .modal-card{width:min(760px,100%);padding:24px;border-radius:30px;border:1px solid var(--stroke);background:linear-gradient(180deg,#271734,#171022);box-shadow:0 30px 90px rgba(0,0,0,.55);position:relative}
+    .close{position:absolute;left:16px;top:16px;width:42px;height:42px;border:none;border-radius:50%;background:rgba(255,255,255,.08);color:#fff;font-size:24px;cursor:pointer}
+    .modal-card h3{margin:0 0 10px;font-size:30px}
+    .modal-card p{margin:0;color:var(--muted);line-height:2;font-weight:650}
+    .modal-list{display:grid;gap:10px;margin-top:16px}
+    .modal-list div{padding:13px 14px;border-radius:16px;background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.08);font-weight:800;color:rgba(255,255,255,.92)}
+
+    footer{padding:26px 0 40px;text-align:center;color:rgba(255,255,255,.60);font-weight:700}
+  </style>
+</head>
+<body>
+  <nav class="nav">
+    <div class="container nav-inner">
+      <div class="brand"><span class="brand-mark"></span><span>نورة القحطاني</span></div>
+      <div class="nav-links">
+        <a class="active" href="#profile">الملف الشخصي</a>
+        <a href="#career">المسار المهني</a>
+        <a href="#skills">المهارات</a>
+        <a href="#works">أعمالي</a>
+        <a href="#contact">تواصل</a>
+      </div>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="container">
+      <div class="hero-shell">
+        <div class="hero-grid">
+          <div class="left-column">
+            <div class="identity-card" id="profile">
+              <div class="avatar"><div class="avatar-badge">ن</div></div>
+              <div>
+                <h2 class="name">نورة القحطاني</h2>
+                <p class="role">أخصائية موارد بشرية وتوظيف بخبرة 7 سنوات في الاستقطاب والعمليات الداخلية وتجربة الموظف وبناء الأنظمة الإدارية الحديثة داخل بيئات العمل السعودية.</p>
+                <div class="status-row">
+                  <span class="pill"><span class="dot"></span><span>متاحة للعمل في الرياض</span></span>
+                  <span class="pill">لغة عربية وإنجليزية</span>
+                </div>
+                <div class="chip-wrap">
+                  <span class="chip">Recruitment</span>
+                  <span class="chip">HR Operations</span>
+                  <span class="chip">Onboarding</span>
+                  <span class="chip">Policies</span>
+                  <span class="chip">Employer Branding</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="contact-card" id="contact">
+              <div class="contact-head">
+                <h3>روابط سريعة</h3>
+                <span>تواصل مباشر</span>
+              </div>
+              <div class="contact-actions">
+                <button class="btn mint" data-modal="whatsapp">واتساب</button>
+                <button class="btn" data-modal="email">البريد</button>
+                <button class="btn peach" data-modal="linkedin">لينكدإن</button>
+                <button class="btn secondary" data-modal="download">تحميل CV</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-main">
+            <div class="hero-copy">
+              <div class="eyebrow">قيادة التوظيف والعمليات HR بأسلوب حديث ومنظم</div>
+              <h1>أبني تجربة موظف أكثر احترافية من أول مقابلة حتى الاستقرار داخل الفريق</h1>
+              <p>أركز على استقطاب الكفاءات المناسبة، تنظيم عمليات الموارد البشرية، تطوير النماذج والسياسات، ورفع كفاءة التواصل بين الإدارة والموظفين. أعمل بأسلوب يجمع بين السرعة والدقة والانطباع المهني العالي.</p>
+              <div class="hero-actions">
+                <button class="btn peach" data-modal="summary">الملخص التنفيذي</button>
+                <button class="btn secondary" onclick="document.getElementById('career').scrollIntoView({behavior:'smooth'})">المسار المهني</button>
+                <button class="btn" onclick="document.getElementById('works').scrollIntoView({behavior:'smooth'})">أعمالي</button>
+              </div>
+            </div>
+
+            <div class="floating-actions">
+              <button class="jump" onclick="document.getElementById('career').scrollIntoView({behavior:'smooth'})"><div><strong>خبراتي</strong><small>محطات مهنية قوية</small></div><b>←</b></button>
+              <button class="jump" onclick="document.getElementById('skills').scrollIntoView({behavior:'smooth'})"><div><strong>مهاراتي</strong><small>مؤشرات ونسب</small></div><b>←</b></button>
+              <button class="jump" onclick="document.getElementById('works').scrollIntoView({behavior:'smooth'})"><div><strong>أعمالي</strong><small>ملفات وإنجازات</small></div><b>←</b></button>
+              <button class="jump" onclick="document.getElementById('cases').scrollIntoView({behavior:'smooth'})"><div><strong>قصص نجاح</strong><small>أثر عملي واضح</small></div><b>←</b></button>
+            </div>
+
+            <div class="hero-visual">
+              <h3>لوحة المؤشرات</h3>
+              <div class="visual-grid">
+                <div class="metric-card tone1"><b>120+</b><span>تعيين ناجح في قطاعات مختلفة</span></div>
+                <div class="metric-card tone2"><b>420+</b><span>مقابلة وفرز ومتابعة مرشحين</span></div>
+                <div class="metric-card tone3"><b>18</b><span>نموذجًا وسياسة داخلية تم تطويرها</span></div>
+                <div class="metric-card tone4"><b>35%</b><span>تحسين سرعة دورة التوظيف</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="split-grid">
+      <div class="timeline-card" id="career">
+        <div class="section-head">
+          <h2>المسار المهني</h2>
+        </div>
+        <div class="timeline-list">
+          <div class="timeline-item">
+            <h4>أخصائية موارد بشرية أولى</h4>
+            <div class="meta"><span>2022 — الآن</span><span>•</span><span>شركة تشغيل وخدمات — الرياض</span></div>
+            <p>إدارة دورة التوظيف كاملة، متابعة العقود والملفات، تجهيز التقارير الشهرية، وتطوير أسلوب التنسيق بين الإدارات والمرشحين.</p>
+          </div>
+          <div class="timeline-item">
+            <h4>منسقة توظيف</h4>
+            <div class="meta"><span>2020 — 2022</span><span>•</span><span>قطاع تجزئة — جدة</span></div>
+            <p>العمل على تغطية الشواغر بسرعة، جدولة المقابلات، تحسين الفرز الأولي، وربط احتياج الفروع بخطط التوظيف اليومية.</p>
+          </div>
+          <div class="timeline-item">
+            <h4>مسؤولة شؤون موظفين</h4>
+            <div class="meta"><span>2018 — 2020</span><span>•</span><span>شركة إدارية — الدمام</span></div>
+            <p>إدارة الملفات والإجازات والبيانات وتحديث النماذج وتطوير الانضباط الإداري الداخلي.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="skills-card" id="skills">
+        <div class="section-head">
+          <h2>المهارات الأساسية</h2>
+        </div>
+        <p>مزيج بين الاستقطاب والتنظيم الإداري والتواصل الاحترافي وبناء تجربة عمل أكثر وضوحًا وانضباطًا.</p>
+        <div class="skills-list">
+          <div class="progress-card">
+            <div class="progress-top"><span>الاستقطاب والتوظيف</span><span>96%</span></div>
+            <div class="bar"><i style="width:96%"></i></div>
+          </div>
+          <div class="progress-card">
+            <div class="progress-top"><span>إدارة عمليات الموارد البشرية</span><span>92%</span></div>
+            <div class="bar"><i style="width:92%"></i></div>
+          </div>
+          <div class="progress-card">
+            <div class="progress-top"><span>تجربة الموظف والانضمام للعمل</span><span>90%</span></div>
+            <div class="bar"><i style="width:90%"></i></div>
+          </div>
+          <div class="progress-card">
+            <div class="progress-top"><span>إعداد السياسات والنماذج</span><span>88%</span></div>
+            <div class="bar"><i style="width:88%"></i></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="showcase-card" id="works">
+      <div class="section-head">
+        <h2>أعمالي وملفاتي</h2>
+        <p>عرض بعض الملفات والإنجازات بطريقة تفاعلية مرتبة تعطي انطباعًا بصريًا أقوى من السرد التقليدي.</p>
+      </div>
+      <div class="showcase-grid">
+        <div class="mini-work tone1">
+          <span class="work-tag">ملف 01</span>
+          <h4>دليل الموظف الجديد</h4>
+          <p>إعداد دليل انضمام واضح ومرتب يختصر الأسئلة المتكررة ويعطي الموظف الجديد انطباعًا احترافيًا من اليوم الأول.</p>
+        </div>
+        <div class="mini-work tone2">
+          <span class="work-tag">ملف 02</span>
+          <h4>إعادة هيكلة نماذج التوظيف</h4>
+          <p>تطوير النماذج الداخلية لتصبح أسرع في التقييم وأوضح للإدارة وأسهل في اتخاذ القرار النهائي.</p>
+        </div>
+        <div class="mini-work tone3">
+          <span class="work-tag">ملف 03</span>
+          <h4>حملة استقطاب موسمية</h4>
+          <p>تنفيذ حملة توظيف كثيفة نجحت في تغطية عدد كبير من الوظائف التشغيلية خلال وقت قصير.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="cases" id="cases">
+      <div class="case-card tone1">
+        <h3>أثر عملي في التوظيف</h3>
+        <p>تقليل مدة التوظيف ورفع جودة الاختيار من خلال فرز أدق وجدولة أسرع وتنسيق احترافي مع الإدارات المعنية، مما أدى إلى تسريع إغلاق الشواغر وتحسين جودة التعيينات.</p>
+        <div class="case-tags"><span>Hiring Speed</span><span>Candidate Quality</span><span>HR Flow</span></div>
+      </div>
+      <div class="case-card tone4">
+        <h3>أثر عملي في العمليات الداخلية</h3>
+        <p>تنظيم الملفات والسياسات والنماذج الداخلية بطريقة واضحة خففت الارتباك اليومي وساعدت على بناء بيئة عمل أكثر ترتيبًا وثقة ومهنية.</p>
+        <div class="case-tags"><span>Policies</span><span>Operations</span><span>Employee Experience</span></div>
+      </div>
+    </section>
+
+    <section>
+      <div class="cta-band">
+        <h2>جاهزة للنقاش والتواصل المهني</h2>
+        <p>أرحب بالفرص التي تبحث عن شخصية منظمة ولبقة وقادرة على تمثيل قسم الموارد البشرية باحتراف، مع اهتمام حقيقي بسرعة الإنجاز وجودة التنفيذ وتحسين تجربة الموظف.</p>
+        <div class="hero-actions">
+          <button class="btn mint" data-modal="whatsapp">ابدأ التواصل</button>
+          <button class="btn peach" data-modal="meeting">طلب مقابلة</button>
+          <button class="btn secondary" data-modal="linkedin">فتح لينكدإن</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>© 2026 — نورة القحطاني</footer>
+
+  <div class="modal" id="modal">
+    <div class="modal-card">
+      <button class="close" id="closeModal">×</button>
+      <h3 id="modalTitle">عنوان</h3>
+      <p id="modalText">نص</p>
+      <div class="modal-list" id="modalList"></div>
+    </div>
+  </div>
+
+  <script>
+    const data = {
+      summary: {
+        title: 'الملخص التنفيذي',
+        text: 'أخصائية موارد بشرية تركز على بناء تجربة توظيف أكثر احترافية، ورفع كفاءة العمليات الداخلية، وتقديم صورة منظمة ولبقة عن بيئة العمل أمام المرشحين والموظفين.',
+        list: ['7 سنوات خبرة', 'خبرة قوية في التوظيف والعمليات', '120+ تعيين ناجح', 'تحسين سرعة دورة التوظيف', 'تطوير نماذج وسياسات داخلية']
+      },
+      whatsapp: {
+        title: 'واتساب',
+        text: 'قناة تواصل سريعة لمناقشة الفرص الوظيفية أو التنسيق لموعد مقابلة.',
+        list: ['05XXXXXXXX', 'متاحة للرد خلال أوقات العمل', 'تنسيق سريع للمقابلات']
+      },
+      email: {
+        title: 'البريد الإلكتروني',
+        text: 'لإرسال تفاصيل الوظيفة أو الوصف الوظيفي أو أي استفسارات مهنية بشكل رسمي.',
+        list: ['nora.hr@sample.sa', 'ردود احترافية', 'تنسيق ملفات وسير ذاتية']
+      },
+      linkedin: {
+        title: 'لينكدإن',
+        text: 'واجهة مهنية لاستعراض المسار الوظيفي والتوصيات والتواصل الرسمي.',
+        list: ['linkedin.com/in/nora-sample', 'شبكة مهنية', 'ملف محدث باستمرار']
+      },
+      download: {
+        title: 'تحميل CV',
+        text: 'نسخة مختصرة قابلة للإرسال السريع مع الحفاظ على نفس الهوية البصرية.',
+        list: ['نسخة PDF عربية', 'نسخة إنجليزية عند الطلب', 'تصميم متطابق مع الصفحة']
+      },
+      meeting: {
+        title: 'طلب مقابلة',
+        text: 'إمكانية التنسيق لموعد مقابلة مباشرة حسب الوقت المناسب.',
+        list: ['تنسيق عبر واتساب', 'تحديد موعد', 'مرونة في الحضور أو الاتصال']
+      }
+    };
+
+    const modal = document.getElementById('modal');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalText = document.getElementById('modalText');
+    const modalList = document.getElementById('modalList');
+    const closeModal = document.getElementById('closeModal');
+
+    document.querySelectorAll('[data-modal]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const key = btn.getAttribute('data-modal');
+        const item = data[key];
+        modalTitle.textContent = item.title;
+        modalText.textContent = item.text;
+        modalList.innerHTML = item.list.map(x => `<div>${x}</div>`).join('');
+        modal.classList.add('show');
+      });
+    });
+
+    closeModal.addEventListener('click', () => modal.classList.remove('show'));
+    modal.addEventListener('click', (e) => { if (e.target === modal) modal.classList.remove('show'); });
+  </script>
+</body>
+</html>
